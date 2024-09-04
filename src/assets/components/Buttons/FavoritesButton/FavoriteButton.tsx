@@ -6,10 +6,9 @@ import './FavoriteButton.scss';
 
 interface FavoriteButtonProps {
     movie: Movie;
-    onRemoveFavorite: () => void;
 }
 
-export default function FavoriteButton({ movie, onRemoveFavorite }: FavoriteButtonProps) {
+export default function FavoriteButton({movie}: FavoriteButtonProps) {
     const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
@@ -35,7 +34,7 @@ export default function FavoriteButton({ movie, onRemoveFavorite }: FavoriteButt
                 try {
                     await removeFavorite(movie.id);
                     setIsFavorite(false);
-                    onRemoveFavorite();
+                    window.location.reload();
                 } catch (error) {
                     console.error("Erro ao remover dos favoritos", error);
                 }

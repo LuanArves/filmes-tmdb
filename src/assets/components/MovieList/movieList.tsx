@@ -34,6 +34,7 @@ export default function MovieList() {
             </div>
         )
     }
+
     return (
         <ul className="movie-list">
             {movie.map((movie) => (
