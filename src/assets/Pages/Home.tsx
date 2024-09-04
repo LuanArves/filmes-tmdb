@@ -1,4 +1,4 @@
-import Navbar from '../components/navbar'
+import Navbar from '../components/navbar/Navbar.tsx'
 import MovieList from "../components/MovieList/movieList.tsx";
 
 
