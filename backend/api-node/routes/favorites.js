@@ -1,6 +1,8 @@
 const express = require('express');
 const db = require('../database/database.js');
+const { v4: uuidv4 } = require('uuid');
 const router = express.Router();
+
 
 
 router.post('/favorites', (req, res) => {
@@ -18,9 +20,8 @@ router.post('/favorites', (req, res) => {
 });
 
 router.delete('/favorites/:id', (req, res) => {
-    const { id } = req.params; // Recebendo o ID do favorito diretamente como parâmetro
+    const { id } = req.params;
 
-    // Remover o favorito diretamente pelo ID
     const deleteQuery = `DELETE FROM favorites WHERE id = ?`;
     db.run(deleteQuery, id, function (err) {
         if (err) {
@@ -40,4 +41,43 @@ router.get('/favorites', (req, res) => {
         res.status(200).json(rows);
     });
 });
+
+router.post('/favorites/share', (req, res) => {
+    const { listName, movies } = req.body;
+    const shareCode = uuidv4();
+    const query = `
+    INSERT INTO shared_lists (name, share_code, movies) 
+    VALUES (?, ?, ?)
+  `;
+
+    db.run(query, [listName, shareCode, JSON.stringify(movies)], function (err) {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+
+        res.status(201).json({
+            link: `${req.protocol}://${req.get('host')}/favorites/share/${shareCode}`,
+            shareCode
+        });
+    });
+});
+
+router.get('/favorites/share/:shareCode', (req, res) => {
+    const shareCode = req.params.shareCode;
+    const query = `SELECT * FROM shared_lists WHERE share_code = ?`;
+    db.get(query, [shareCode], (err, row) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        if (row) {
+            res.status(200).json({
+                listName: row.name,
+                movies: JSON.parse(row.movies)
+            });
+        } else {
+            res.status(404).json({ error: 'List not found' });
+        }
+    });
+});
+
 module.exports = router;

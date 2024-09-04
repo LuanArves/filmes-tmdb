@@ -18,4 +18,19 @@ db.serialize(() => {
             console.log("Successfully create");
         }
     });
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS listas_compartilhadas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            share_code TEXT UNIQUE NOT NULL,
+            movie TEXT NOT NULL
+        )
+    `, (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("Tabela listas_compartilhadas criada com sucesso!");
+        }
+    });
 });
