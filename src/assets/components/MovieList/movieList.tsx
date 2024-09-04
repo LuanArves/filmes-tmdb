@@ -14,7 +14,7 @@ export default function MovieList() {
         getMovies();
     }, []);
     const getMovies =  async () => {
-       await axios({
+        await axios({
             method: 'get',
             url: 'https://api.themoviedb.org/3/discover/movie',
             params:{

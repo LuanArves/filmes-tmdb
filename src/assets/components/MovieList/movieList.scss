@@ -13,3 +13,25 @@
     list-style: none;
     width: 100%;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+
+.pagination li a {
+    padding: 2px 16px;
+    color: #6046ff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.pagination li.active a {
+    background-color: #6046ff;
+    color: white;
+    border: 1px solid #6046ff;
+}
