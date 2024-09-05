@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 
 app.use('/api', favoritesRoutes);
 
+app.get('*', (req, res) => {
+    res.sendFile('index.html');
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });

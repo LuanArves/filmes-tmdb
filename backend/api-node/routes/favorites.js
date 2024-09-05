@@ -43,36 +43,41 @@ router.get('/favorites', (req, res) => {
 });
 
 router.post('/favorites/share', (req, res) => {
-    const { listName, movies } = req.body;
+    const { listName, movie } = req.body;
     const shareCode = uuidv4();
     const query = `
-    INSERT INTO shared_lists (name, share_code, movies) 
+    INSERT INTO listas_compartilhadas (name, share_code, movie) 
     VALUES (?, ?, ?)
   `;
+    const movieJSON = JSON.stringify(movie);
 
-    db.run(query, [listName, shareCode, JSON.stringify(movies)], function (err) {
+    db.run(query, [listName, shareCode, movieJSON], function (err) {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
 
-        res.status(201).json({
-            link: `${req.protocol}://${req.get('host')}/favorites/share/${shareCode}`,
-            shareCode
-        });
+        const frontendBaseUrl = 'http://localhost:5173';
+        const link = `${frontendBaseUrl}/api/favorites/share/${shareCode}`;
+
+        console.log("Resposta que será enviada:", { link, shareCode });
+        res.status(201).json({ link, shareCode });
     });
 });
 
 router.get('/favorites/share/:shareCode', (req, res) => {
+    console.log("Rota GET /favorites/share/:shareCode chamada!");
     const shareCode = req.params.shareCode;
-    const query = `SELECT * FROM shared_lists WHERE share_code = ?`;
+    const query = `SELECT * FROM listas_compartilhadas WHERE share_code = ?`;
     db.get(query, [shareCode], (err, row) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
         if (row) {
+            console.log("Resposta completa:", JSON.stringify({ listName: row.name, movie: JSON.parse(row.movie) }));
+            res.setHeader('Content-Type', 'application/json');
             res.status(200).json({
                 listName: row.name,
-                movies: JSON.parse(row.movies)
+                movie: JSON.parse(row.movie)
             });
         } else {
             res.status(404).json({ error: 'List not found' });
