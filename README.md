@@ -1,9 +1,9 @@
-
-=======
->>>>>>> 60688c951c0cd16364dc80a6e1820abca6266b08
 # Projeto: Lista de Filmes
 
 Este projeto é uma aplicação de lista de filmes utilizando React no front-end e Node.js no back-end. Ele permite visualizar filmes, adicionar aos favoritos, e compartilhar listas de filmes favoritos.
+
+## Observações :
+Ao acessar a lista de favoritos e clicar no botão 'Ver Detalhes', você será redirecionado para a página de detalhes de outro filme. Para ser mais específico, será direcionado para o filme que tiver o mesmo ID no TMDB que o filme na lista de favoritos. Isso ocorre porque a tabela de lista possui um ID próprio para cada filme adicionado e, por algum motivo que ainda não descobri, esse é o ID que está sendo passado para o botão 'Ver Detalhes' dos filmes na lista. Esse problema acontece apenas na página FavoritePage.tsx; o restante da aplicação continua funcionando normalmente.
 
 ## Requisitos
 
@@ -88,9 +88,6 @@ O servidor back-end estará disponível em `http://localhost:3000`.
 - Node.js
 - Express
 - SQLite
-- UUID
-```
-=======
 
 ### Backend:
 - Node.js
