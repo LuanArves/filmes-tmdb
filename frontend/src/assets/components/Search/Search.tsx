@@ -12,7 +12,7 @@ export default function Search() {
     const query = searchParams.get("q");
 
     const searchURL = "https://api.themoviedb.org/3/search/movie";
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = '023f50eadcc5fd4817f2aef593206032'
 
     const getSearchedMovies = async () => {
         const url = `${searchURL}?api_key=${apiKey}&query=${query}`;

@@ -6,7 +6,7 @@ import MovieCard from "../MovieCard/MovieCard.tsx";
 import ReactLoading from "react-loading";
 import ReactPaginate from 'react-paginate';
 
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = '023f50eadcc5fd4817f2aef593206032'
 
 export default function MovieList() {
     const [movies, setMovies] = useState<Movie[]>([]);

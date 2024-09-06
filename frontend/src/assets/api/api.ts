@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { Movie } from '../Types/Movie.ts';
 
-const urlBackend = import.meta.env.VITE_URL_BACKEND;
-const API_URL = `${urlBackend}/api`;
 
+const API_URL = `http://localhost:3000/api`;
 export const addFavorite = async (movie: Movie) => {
     try {
         const movieData = {

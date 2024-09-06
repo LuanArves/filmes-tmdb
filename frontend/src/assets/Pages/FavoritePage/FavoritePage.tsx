@@ -7,7 +7,7 @@ import ReactLoading from "react-loading";
 import ShareModal from "../../components/Share/Share";
 import { Movie } from "../../Types/Movie";
 
-const urlBackend = import.meta.env.VITE_URL_BACKEND;
+const urlBackend = 'http://localhost:3000';
 
 export default function FavoritesPage() {
     const [isLoading, setIsLoading] = useState<boolean>(true);

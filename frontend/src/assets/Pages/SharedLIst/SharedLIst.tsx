@@ -8,7 +8,7 @@ import axios from 'axios';
 import Navbar from "../../components/navbar/Navbar.tsx";
 import './SharedList.scss'
 
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = '023f50eadcc5fd4817f2aef593206032';
 
 export default function SharedListPage() {
     const { shareCode } = useParams();
