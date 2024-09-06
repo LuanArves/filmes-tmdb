@@ -79,13 +79,8 @@ O servidor back-end estará disponível em `http://localhost:3000`.
 - React
 - Vite
 - TypeScript
-- Axios
-- SCSS
-- React Router Dom
 
 ### Backend:
-
 - Node.js
 - Express
-- SQLite
-- UUID
+- SQLite (Banco de dados)
