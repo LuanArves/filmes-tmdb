@@ -1,4 +1,6 @@
-```markdown
+
+=======
+>>>>>>> 60688c951c0cd16364dc80a6e1820abca6266b08
 # Projeto: Lista de Filmes
 
 Este projeto é uma aplicação de lista de filmes utilizando React no front-end e Node.js no back-end. Ele permite visualizar filmes, adicionar aos favoritos, e compartilhar listas de filmes favoritos.
@@ -80,9 +82,6 @@ O servidor back-end estará disponível em `http://localhost:3000`.
 - React
 - Vite
 - TypeScript
-- Axios
-- SCSS
-- React Router Dom
 
 ### Backend:
 
@@ -91,3 +90,10 @@ O servidor back-end estará disponível em `http://localhost:3000`.
 - SQLite
 - UUID
 ```
+=======
+
+### Backend:
+- Node.js
+- Express
+- SQLite (Banco de dados)
+>>>>>>> 60688c951c0cd16364dc80a6e1820abca6266b08
