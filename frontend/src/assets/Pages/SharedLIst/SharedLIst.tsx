@@ -5,6 +5,11 @@ import { getSharedList } from '../../api/api';
 import { Movie } from "../../Types/Movie";
 import MovieCard from '../../components/MovieCard/MovieCard';
 import axios from 'axios';
+import Navbar from "../../components/navbar/Navbar.tsx";
+import './SharedList.scss'
+
+const apiKey = import.meta.env.VITE_API_KEY;
+
 export default function SharedListPage() {
     const { shareCode } = useParams();
     const [listName, setListName] = useState('');
@@ -17,11 +22,10 @@ export default function SharedListPage() {
                 if (shareCode) {
                     const response = await getSharedList(shareCode);
                     setListName(response.listName);
-                    const movieIds = response.movie; // Obtenha os IDs dos filmes
+                    const movieIds = response.movie;
 
-                    // Agora vamos buscar os detalhes de cada filme
                     const movieDetailsPromises = movieIds.map(async (id: number) => {
-                        const movieDetails = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=023f50eadcc5fd4817f2aef593206032`);
+                        const movieDetails = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
                         return movieDetails.data;
                     });
 
@@ -52,13 +56,21 @@ export default function SharedListPage() {
     }
 
     return (
-        <div>
-            <h2>Shared List: {listName}</h2>
-            <ul className="movie-list">
-                {movies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
-            </ul>
+        <div className="shared-list">
+            <div>
+                <Navbar/>
+            </div>
+            <div>
+                <div className="container">
+                    <h2 className="shared-list-title">Lista compartilhada</h2>
+                    <h2 className='name-list'>{listName}</h2>
+                </div>
+                <ul className="movie-list">
+                    {movies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie}/>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }

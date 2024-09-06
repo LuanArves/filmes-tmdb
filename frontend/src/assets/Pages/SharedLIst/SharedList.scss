@@ -1,3 +1,22 @@
 .list-not-found {
   color:white;
 }
+.shared-list{
+
+
+  .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    .shared-list-title{
+      color : white;
+      margin-top: 20px;
+      font-size: 1.9rem;
+    }
+    .name-list{
+      color: #5037e0;
+      margin-top: 20px    ;
+    }
+  }
+}

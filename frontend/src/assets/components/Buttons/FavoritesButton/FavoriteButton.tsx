@@ -28,7 +28,6 @@ export default function FavoriteButton({movie}: FavoriteButtonProps) {
 
     const handleFavoriteClick = async () => {
         if (isFavorite) {
-            // Mostrar a mensagem de confirmação
             if (window.confirm("Tem certeza que deseja remover dos favoritos?")) {
                 console.log(movie.id);
                 try {

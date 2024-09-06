@@ -3,10 +3,93 @@
   align-items: center;
   text-align: center;
   margin-top: 5vh;
+
+  .my-favorites-title {
+    margin-right: 81%;
+    font-size: 1.5rem;
+    color: #6046ff;
+  }
+
   .empty-text {
     text-align: center;
     color: white;
     font-weight: bold;
     font-size: 1.6rem;
+  }
+
+  .modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .share-button{
+      margin-left: 82%;
+    }
+
+    button {
+      background-color: #6046ff;
+      border: none;
+      color: white;
+      padding: 3px 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      align-items: center;
+      margin-top: 10px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      opacity: 1;
+      visibility: visible;
+
+      &:hover {
+        background-color: #5037e0;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(96, 70, 255, 0.7);
+      }
+    }
+
+    .share-link-container {
+      margin-top: 20px;
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      a {
+        color: #70a1ff;
+        font-size: 1rem;
+        text-decoration: underline;
+
+        &:hover {
+          color: #1e90ff;
+        }
+      }
+    }
+  }
+  .share-link-button {
+    display: inline-block;
+    padding: 3px 80px;
+    background-color: #6046ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+
+
+    &:hover {
+      background-color: #5037e0;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(96, 70, 255, 0.7);
+    }
   }
 }

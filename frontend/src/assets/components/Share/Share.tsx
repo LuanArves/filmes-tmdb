@@ -12,7 +12,7 @@ export default function ShareModal({ isOpen, onClose, onShare, shareLink }: Shar
     const [listName, setListName] = useState('');
 
     const handleSubmit = async () => {
-        if (listName.trim() === '') { // Verificar se o nome da lista está vazio
+        if (listName.trim() === '') {
             alert('Please enter a list name.');
             return;
         }
@@ -53,7 +53,7 @@ export default function ShareModal({ isOpen, onClose, onShare, shareLink }: Shar
                 <button onClick={onClose}>Cancelar</button>
 
                 {shareLink && (
-                    <div>
+                    <div className="share-container">
                         <input className='input-generated-link' type="text" value={shareLink} readOnly />
                         <button onClick={handleCopyLink}>Copiar</button>
                     </div>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import './Details.scss'
 interface DetailButtonProps {
-    movieId: number; // ID do filme para redirecionar para a página de detalhes
+    movieId: number;
 }
 
 export default function DetailButton({ movieId }: DetailButtonProps) {

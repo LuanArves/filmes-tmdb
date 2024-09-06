@@ -12,4 +12,5 @@ export interface Movie {
     release_date: string;
     overview: string;
     vote_average: number;
+    movie_id: number;
 }

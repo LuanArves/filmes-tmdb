@@ -1,6 +1,7 @@
 .modal-container {
   display: flex;
   flex-direction: column;
+
   .modal-content {
     display: flex;
     flex-direction: column;
@@ -17,16 +18,29 @@
     margin-bottom: 5px;
   }
   .input-generated-link{
-    border-radius: 20px;
+    border-radius: 6px;
+    border: none;
+    height: 25px;
+    color: white;
+    font-size: 1rem;
+    padding: 0.4rem;
+    align-items: center;
+    background-color: rgba(211, 221, 252, 0.25);
   }
   .input-list-name{
     border-radius: 6px;
     border: none;
     height: 25px;
-    color: black;
+    color: white;
     font-size: 1rem;
     padding: 0.4rem;
     align-items: center;
+    background-color: rgba(211, 221, 252, 0.25);
+  }
+  .share-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
   }
 
 }

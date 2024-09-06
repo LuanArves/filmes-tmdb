@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Movie } from '../Types/Movie.ts';
 
-const API_URL = 'http://localhost:3000/api';
+const urlBackend = import.meta.env.VITE_URL_BACKEND;
+const API_URL = `${urlBackend}/api`;
 
 export const addFavorite = async (movie: Movie) => {
     try {
@@ -40,6 +41,25 @@ export const getFavorites = async (): Promise<FavoriteMovie[]> => {
         return res.data;
     } catch (error) {
         console.error("Erro ao obter favoritos", error);
+        throw error;
+    }
+};
+
+export const getSharedList = async (shareCode: string) => {
+    try {
+        const response = await axios.get(`${API_URL}/favorites/share/${shareCode}`);
+        console.log(response);
+
+        if (response.status !== 200) {
+            throw new Error('List not found');
+        }
+
+        const data = response.data;
+        console.log(data);
+        console.log("Dados recebidos pela API:", data);
+        return data;
+    } catch (error) {
+        console.error("Erro ao buscar a lista compartilhada:", error);
         throw error;
     }
 };

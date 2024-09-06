@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSearchAlt2 } from "react-icons/bi";
-
 import "./Navbar.scss";
 
 export default function Navbar() {
@@ -18,17 +17,19 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="navbar">
+        <div className="navbar-container">
             <h2 className="page-title">
+
                 <Link to="/">
-                    Filmes
+                    Filmes-tmdb
                 </Link>
             </h2>
-            <p className="favorite-button-list">
+            <h2 className="favorite-button-list">
+
                 <Link to={`/FavoritePage`}>
-                    Lista de favoritos
+                    Favoritos
                 </Link>
-            </p>
+            </h2>
             <form className='search-bar' onSubmit={handleSubmit}>
                 <input className='search-bar-input'
                     type="text"
@@ -40,6 +41,6 @@ export default function Navbar() {
                     <BiSearchAlt2 />
                 </button>
             </form>
-        </nav>
+        </div>
     );
 }
